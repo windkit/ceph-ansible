@@ -29,18 +29,9 @@
 - name: include ceph_disk_cli_options_facts.yml
   include: ceph_disk_cli_options_facts.yml
 
-- name: include build_devices.yml
-  include: build_devices.yml
-
-- name: read information about the devices
-  parted:
-    device: "{{ item }}"
-    unit: MiB
-  register: parted_results
-  with_items: "{{ devices }}"
-
-- name: include check_gpt.yml
-  include: check_gpt.yml
+- name: run choose disk detection
+  choose_disk:
+    vars: "{{ vars }}"
 
 - name: include scenarios/collocated.yml
   include: scenarios/collocated.yml
