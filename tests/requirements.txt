@@ -3,3 +3,5 @@
 testinfra==1.7.1
 pytest-xdist
 notario>=0.0.13
+ansible~=2.5
+netaddr
